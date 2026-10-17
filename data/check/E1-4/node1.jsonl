@@ -1,0 +1,45 @@
+{"ts": "2026-10-16T08:13:58.857+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Сервер запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:13:58.858+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:13:58.858+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Подключаемся к 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:13:58.860+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлено 16 байт"}
+{"ts": "2026-10-16T08:13:58.861+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 55102)"}
+{"ts": "2026-10-16T08:13:58.861+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получено 16 байт от ('127.0.0.1', 55102)"}
+{"ts": "2026-10-16T08:13:58.862+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 получил: 'Hello from node2'"}
+{"ts": "2026-10-16T08:13:58.862+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлено 37 байт в ('127.0.0.1', 55102)"}
+{"ts": "2026-10-16T08:13:58.863+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получено 37 байт ответа"}
+{"ts": "2026-10-16T08:13:58.865+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто удалённой стороной: ('127.0.0.1', 55102)"}
+{"ts": "2026-10-16T08:13:58.865+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 55102) закрыто"}
+{"ts": "2026-10-16T08:13:58.866+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 55103)"}
+{"ts": "2026-10-16T08:14:28.874+00:00", "level": "WARNING", "logger": "p2p.transport.connection", "node": "node1", "msg": "Тайм-аут чтения от ('127.0.0.1', 55103) - закрываем соединение"}
+{"ts": "2026-10-16T08:14:28.876+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 55103) закрыто"}
+{"ts": "2026-10-16T08:14:29.872+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 остановлен"}
+{"ts": "2026-10-16T08:22:05.254+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Сервер запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:22:05.256+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:22:05.256+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Подключение к 127.0.0.1:5001"}
+{"ts": "2026-10-16T08:22:05.258+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлено 16 байт"}
+{"ts": "2026-10-16T08:22:05.258+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 55183)"}
+{"ts": "2026-10-16T08:22:05.259+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получено 16 байт от ('127.0.0.1', 55183)"}
+{"ts": "2026-10-16T08:22:05.259+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 получил: 'Hello from node2'"}
+{"ts": "2026-10-16T08:22:05.260+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлено 53 байт в ('127.0.0.1', 55183)"}
+{"ts": "2026-10-16T08:22:05.260+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получено 53 байт ответа"}
+{"ts": "2026-10-16T08:22:05.262+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто удалённой стороной: ('127.0.0.1', 55183)"}
+{"ts": "2026-10-16T08:22:05.263+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 55183) закрыто"}
+{"ts": "2026-10-16T08:22:05.264+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 55184)"}
+{"ts": "2026-10-16T08:22:35.265+00:00", "level": "WARNING", "logger": "p2p.transport.connection", "node": "node1", "msg": "Тайм-аут чтения от ('127.0.0.1', 55184) - закрытие соединения"}
+{"ts": "2026-10-16T08:22:35.267+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 55184) закрыто"}
+{"ts": "2026-10-16T08:22:36.267+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 остановлен"}
+{"ts": "2026-10-17T15:50:59.619+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Сервер запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-17T15:50:59.625+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-17T15:50:59.626+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Подключаемся к 127.0.0.1:5001"}
+{"ts": "2026-10-17T15:50:59.628+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлен кадр: type=16, request_id=1, payload=16 байт"}
+{"ts": "2026-10-17T15:50:59.629+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 49221)"}
+{"ts": "2026-10-17T15:50:59.630+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получен кадр: type=16, request_id=1, payload=16 байт"}
+{"ts": "2026-10-17T15:50:59.632+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 получил: 'Hello from node2'"}
+{"ts": "2026-10-17T15:50:59.633+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлен кадр: type=2, request_id=1, payload=51 байт"}
+{"ts": "2026-10-17T15:50:59.634+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получен ответ: type=2, request_id=1, payload=51 байт"}
+{"ts": "2026-10-17T15:50:59.637+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто (EOF): ('127.0.0.1', 49221)"}
+{"ts": "2026-10-17T15:50:59.638+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 49221) закрыто"}
+{"ts": "2026-10-17T15:50:59.639+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 49222)"}
+{"ts": "2026-10-17T15:51:29.654+00:00", "level": "WARNING", "logger": "p2p.transport.connection", "node": "node1", "msg": "Тайм-аут чтения заголовка от ('127.0.0.1', 49222) — закрываем"}
+{"ts": "2026-10-17T15:51:29.655+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 49222) закрыто"}
+{"ts": "2026-10-17T15:51:30.650+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 остановлен"}
