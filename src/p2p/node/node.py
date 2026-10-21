@@ -44,35 +44,24 @@ class Node:
             await self._server.wait_closed()
             logger.info("Узел %s остановлен", self.config.node_id)
 
-    async def _on_frame(self, frame: Frame) -> Frame | None:
-        text = frame.payload.decode("utf-8", errors="replace")
-        logger.info("Узел %s получил: %r", self.config.node_id, text)
-        response_text = f"ACK from {self.config.node_id}: Соединение успешно"
-        response_payload = response_text.encode("utf-8")
-        response_header = FrameHeader(
-            version=PROTOCOL_VERSION,
-            type=FRAME_TYPE_HELLO_ACK,
-            flags=0,
-            request_id=frame.header.request_id,   
-            payload_length=len(response_payload),
-        )
-        return Frame(header=response_header, payload=response_payload)
-
-    async def send_to(
-        self, host: str, port: int, message: str,
-    ) -> Optional[Frame]:
-        payload = message.encode("utf-8")
-        header = FrameHeader(
-            version=PROTOCOL_VERSION,
-            type=FRAME_TYPE_DATA,
-            flags=0,
-            request_id=self.next_request_id(),
-            payload_length=len(payload),
-        )
-        frame = Frame(header=header, payload=payload)
-        return await connect_and_send(
-            host=host, port=port,
-            frame=frame,
-            max_frame_payload=self.config.max_frame_payload,
-            connection_timeout=self.config.connection_timeout,
-        )
+     async def send_to(
+         self, host: str, port: int, message: str,
+     ) -> Optional[Frame]:
+         payload = message.encode("utf-8")
+         rid = self.next_request_id()
+         header = FrameHeader(
+             version=PROTOCOL_VERSION,
+             type=FRAME_TYPE_DATA,
+             flags=0,
+             request_id=rid,
+             payload_length=len(payload),
+         )
+         frame = Frame(header=header, payload=payload)
+         return await connect_and_send(
+             host=host, port=port,
+             frame=frame,
+             max_frame_payload=self.config.max_frame_payload,
+             connection_timeout=self.config.connection_timeout,
+             expected_request_id=rid,
+         )
+    

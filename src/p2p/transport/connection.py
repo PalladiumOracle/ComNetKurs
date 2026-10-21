@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 FrameHandler = Callable[[Frame], Awaitable[Frame | None]]
 _READ_CHUNK_SIZE = 4096
 
-
 async def start_server(
     host: str,
     port: int,
@@ -41,21 +40,16 @@ async def start_server(
                     logger.info("Соединение закрыто (EOF): %s", peer)
                     break
 
-                logger.debug("Прочитано %d байт от %s", len(data), peer)
-
                 try:
                     frames = decoder.feed(data)
                 except ValueError as exc:
-                    logger.warning(
-                        "Ошибка декодирования от %s: %s", peer, exc
-                    )
+                    logger.warning("Ошибка декодирования от %s: %s", peer, exc)
                     break
 
                 for frame in frames:
                     logger.info(
                         "Получен кадр: type=%d, request_id=%d, payload=%d байт",
-                        frame.header.type,
-                        frame.header.request_id,
+                        frame.header.type, frame.header.request_id,
                         frame.header.payload_length,
                     )
                     response = await on_frame(frame)
@@ -63,10 +57,8 @@ async def start_server(
                         writer.write(response.encode())
                         await writer.drain()
                         logger.info(
-                            "Отправлен кадр: type=%d, request_id=%d, "
-                            "payload=%d байт",
-                            response.header.type,
-                            response.header.request_id,
+                            "Отправлен кадр: type=%d, request_id=%d, payload=%d байт",
+                            response.header.type, response.header.request_id,
                             response.header.payload_length,
                         )
         except Exception as exc:
@@ -90,8 +82,9 @@ async def connect_and_send(
     *,
     max_frame_payload: int,
     connection_timeout: float = 30.0,
+    expected_request_id: int | None = None,
 ) -> Frame | None:
-    logger.info("Подключаемся к %s:%d", host, port)
+    logger.info("Подключение к %s:%d", host, port)
     reader, writer = await asyncio.wait_for(
         asyncio.open_connection(host, port), timeout=connection_timeout
     )
@@ -101,40 +94,48 @@ async def connect_and_send(
         await writer.drain()
         logger.info(
             "Отправлен кадр: type=%d, request_id=%d, payload=%d байт",
-            frame.header.type,
-            frame.header.request_id,
+            frame.header.type, frame.header.request_id,
             frame.header.payload_length,
         )
-        deadline = asyncio.get_event_loop().time() + connection_timeout
+
+        loop = asyncio.get_running_loop()
+        deadline = loop.time() + connection_timeout
+
         while True:
-            remaining = deadline - asyncio.get_event_loop().time()
+            remaining = deadline - loop.time()
             if remaining <= 0:
-                logger.warning("Тайм-аут ожидания ответа от %s:%d",
-                               host, port)
+                logger.warning("Тайм-аут ожидания правильного ответа от %s:%d", host, port)
                 return None
+
             try:
                 data = await asyncio.wait_for(
                     reader.read(_READ_CHUNK_SIZE), timeout=remaining,
                 )
             except asyncio.TimeoutError:
-                logger.warning("Тайм-аут ожидания ответа от %s:%d",
-                               host, port)
+                logger.warning("Тайм-аут ожидания правильного ответа от %s:%d", host, port)
                 return None
+
             if not data:
-                logger.warning("Соединение закрыто до получения ответа")
+                logger.warning("Соединение закрыто до получения правильного ответа")
                 return None
+
             try:
                 frames = decoder.feed(data)
             except ValueError as exc:
                 logger.warning("Ошибка декодирования ответа: %s", exc)
-                return None
-            if frames:
-                if len(frames) > 1:
+                continue  
+            for resp in frames:
+                if expected_request_id is None or resp.header.request_id == expected_request_id:
                     logger.info(
-                        "В одном чанке пришло %d кадров; "
-                        "возвращаем первый", len(frames),
+                        "Принят ответ: request_id=%d, type=%d",
+                        resp.header.request_id, resp.header.type,
                     )
-                return frames[0]
+                    return resp
+                else:
+                    logger.warning(
+                        "Ответ отклонён: request_id=%d, ожидался %d",
+                        resp.header.request_id, expected_request_id,
+                    )
     finally:
         writer.close()
         try:

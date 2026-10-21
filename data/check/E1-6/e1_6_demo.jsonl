@@ -1,0 +1,4 @@
+{"ts": "2026-10-21T06:46:00.566+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "e1_6_demo", "msg": "Подключение к 127.0.0.1:5055"}
+{"ts": "2026-10-21T06:46:00.568+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "e1_6_demo", "msg": "Отправлен кадр: type=16, request_id=1, payload=3 байт"}
+{"ts": "2026-10-21T06:46:00.569+00:00", "level": "WARNING", "logger": "p2p.transport.connection", "node": "e1_6_demo", "msg": "Ответ отклонён: request_id=999, ожидался 1"}
+{"ts": "2026-10-21T06:46:00.681+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "e1_6_demo", "msg": "Принят ответ: request_id=1, type=2"}

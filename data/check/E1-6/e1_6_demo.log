@@ -1,0 +1,4 @@
+2026-10-21 09:46:00 [INFO] p2p.transport.connection: Подключение к 127.0.0.1:5055
+2026-10-21 09:46:00 [INFO] p2p.transport.connection: Отправлен кадр: type=16, request_id=1, payload=3 байт
+2026-10-21 09:46:00 [WARNING] p2p.transport.connection: Ответ отклонён: request_id=999, ожидался 1
+2026-10-21 09:46:00 [INFO] p2p.transport.connection: Принят ответ: request_id=1, type=2
