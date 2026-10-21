@@ -10,6 +10,7 @@ class NodeConfig:
     node_id: str                      #логическое имя узла
     host: str                         #адрес прослушивания
     port: int                         #TCP-порт
+    state_dir: str                    #папка для ключей и состояния
     protocol_version: int             #версия протокола
     max_frame_payload: int            #максимальный размер payload, байт
     connection_timeout: float         #тайм-аут соединения, секунды
@@ -29,7 +30,7 @@ def load_config(path: str | Path) -> NodeConfig:
         raise ValueError(f"Конфиг должен быть словарём: {path}")
 
     required = [
-        "node_id", "host", "port", "protocol_version",
+        "node_id", "host", "port", "state_dir", "protocol_version",
         "max_frame_payload", "connection_timeout", "rpc_timeout",
     ]
     missing = [key for key in required if key not in raw]

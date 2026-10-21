@@ -28,3 +28,6 @@ docker/volumes/
 # ОС
 Thumbs.db
 .DS_Store
+
+#локальные ключи
+data/state

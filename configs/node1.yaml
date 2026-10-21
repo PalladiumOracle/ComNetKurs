@@ -1,7 +1,7 @@
 node_id: node1
 host: 127.0.0.1
 port: 5001
-
+state_dir: data/state/node1
 protocol_version: 1
 max_frame_payload: 1048576      
 connection_timeout: 30.0
