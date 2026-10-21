@@ -1,0 +1,23 @@
+{"ts": "2026-10-21T07:09:15.700+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Сервер запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-21T07:09:15.701+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 запущен на 127.0.0.1:5001"}
+{"ts": "2026-10-21T07:09:15.702+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Подключение к 127.0.0.1:5001"}
+{"ts": "2026-10-21T07:09:15.704+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлен кадр: type=200, request_id=1, payload=7 байт"}
+{"ts": "2026-10-21T07:09:15.723+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 50461)"}
+{"ts": "2026-10-21T07:09:15.724+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 50462)"}
+{"ts": "2026-10-21T07:09:15.725+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получен кадр: type=200, request_id=1, payload=7 байт"}
+{"ts": "2026-10-21T07:09:15.725+00:00", "level": "WARNING", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1: неизвестный тип кадра 200"}
+{"ts": "2026-10-21T07:09:15.726+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто (EOF): ('127.0.0.1', 50462)"}
+{"ts": "2026-10-21T07:09:15.726+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 50462) закрыто"}
+{"ts": "2026-10-21T07:09:15.908+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Подключение к 127.0.0.1:5001"}
+{"ts": "2026-10-21T07:09:15.911+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение установлено: ('127.0.0.1', 50463)"}
+{"ts": "2026-10-21T07:09:15.912+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлен кадр: type=16, request_id=3, payload=6 байт"}
+{"ts": "2026-10-21T07:09:15.912+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Получен кадр: type=16, request_id=3, payload=6 байт"}
+{"ts": "2026-10-21T07:09:15.913+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 получил: 'normal'"}
+{"ts": "2026-10-21T07:09:15.914+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Отправлен кадр: type=2, request_id=3, payload=22 байт"}
+{"ts": "2026-10-21T07:09:15.915+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Принят ответ: request_id=3, type=2"}
+{"ts": "2026-10-21T07:09:15.916+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто (EOF): ('127.0.0.1', 50463)"}
+{"ts": "2026-10-21T07:09:15.917+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 50463) закрыто"}
+{"ts": "2026-10-21T07:09:16.725+00:00", "level": "WARNING", "logger": "p2p.transport.connection", "node": "node1", "msg": "Тайм-аут ожидания правильного ответа от 127.0.0.1:5001"}
+{"ts": "2026-10-21T07:09:16.727+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение закрыто (EOF): ('127.0.0.1', 50461)"}
+{"ts": "2026-10-21T07:09:16.728+00:00", "level": "INFO", "logger": "p2p.transport.connection", "node": "node1", "msg": "Соединение с ('127.0.0.1', 50461) закрыто"}
+{"ts": "2026-10-21T07:09:16.729+00:00", "level": "INFO", "logger": "p2p.node.node", "node": "node1", "msg": "Узел node1 остановлен"}

@@ -17,6 +17,7 @@ async def start_server(
     max_frame_payload: int,
     connection_timeout: float = 30.0,
 ) -> asyncio.AbstractServer:
+
     async def handle_client(
         reader: asyncio.StreamReader,
         writer: asyncio.StreamWriter,
@@ -52,7 +53,13 @@ async def start_server(
                         frame.header.type, frame.header.request_id,
                         frame.header.payload_length,
                     )
-                    response = await on_frame(frame)
+                    try:
+                        response = await on_frame(frame)
+                    except Exception as exc:
+                        logger.exception(
+                            "Ошибка в обработчике кадра от %s: %s", peer, exc
+                        )
+                        continue  
                     if response is not None:
                         writer.write(response.encode())
                         await writer.drain()
@@ -104,7 +111,9 @@ async def connect_and_send(
         while True:
             remaining = deadline - loop.time()
             if remaining <= 0:
-                logger.warning("Тайм-аут ожидания правильного ответа от %s:%d", host, port)
+                logger.warning(
+                    "Тайм-аут ожидания правильного ответа от %s:%d", host, port
+                )
                 return None
 
             try:
@@ -112,7 +121,9 @@ async def connect_and_send(
                     reader.read(_READ_CHUNK_SIZE), timeout=remaining,
                 )
             except asyncio.TimeoutError:
-                logger.warning("Тайм-аут ожидания правильного ответа от %s:%d", host, port)
+                logger.warning(
+                    "Тайм-аут ожидания правильного ответа от %s:%d", host, port
+                )
                 return None
 
             if not data:
@@ -123,7 +134,8 @@ async def connect_and_send(
                 frames = decoder.feed(data)
             except ValueError as exc:
                 logger.warning("Ошибка декодирования ответа: %s", exc)
-                continue  
+                continue
+
             for resp in frames:
                 if expected_request_id is None or resp.header.request_id == expected_request_id:
                     logger.info(

@@ -1,0 +1,23 @@
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Сервер запущен на 127.0.0.1:5001
+2026-10-21 10:09:15 [INFO] p2p.node.node: Узел node1 запущен на 127.0.0.1:5001
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Подключение к 127.0.0.1:5001
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Отправлен кадр: type=200, request_id=1, payload=7 байт
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение установлено: ('127.0.0.1', 50461)
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение установлено: ('127.0.0.1', 50462)
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Получен кадр: type=200, request_id=1, payload=7 байт
+2026-10-21 10:09:15 [WARNING] p2p.node.node: Узел node1: неизвестный тип кадра 200
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение закрыто (EOF): ('127.0.0.1', 50462)
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение с ('127.0.0.1', 50462) закрыто
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Подключение к 127.0.0.1:5001
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение установлено: ('127.0.0.1', 50463)
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Отправлен кадр: type=16, request_id=3, payload=6 байт
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Получен кадр: type=16, request_id=3, payload=6 байт
+2026-10-21 10:09:15 [INFO] p2p.node.node: Узел node1 получил: 'normal'
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Отправлен кадр: type=2, request_id=3, payload=22 байт
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Принят ответ: request_id=3, type=2
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение закрыто (EOF): ('127.0.0.1', 50463)
+2026-10-21 10:09:15 [INFO] p2p.transport.connection: Соединение с ('127.0.0.1', 50463) закрыто
+2026-10-21 10:09:16 [WARNING] p2p.transport.connection: Тайм-аут ожидания правильного ответа от 127.0.0.1:5001
+2026-10-21 10:09:16 [INFO] p2p.transport.connection: Соединение закрыто (EOF): ('127.0.0.1', 50461)
+2026-10-21 10:09:16 [INFO] p2p.transport.connection: Соединение с ('127.0.0.1', 50461) закрыто
+2026-10-21 10:09:16 [INFO] p2p.node.node: Узел node1 остановлен

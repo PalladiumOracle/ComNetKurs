@@ -5,6 +5,7 @@ from typing import Optional
 from p2p.config import NodeConfig
 from p2p.protocol.frame import (
     FRAME_TYPE_DATA,
+    FRAME_TYPE_ERROR,
     FRAME_TYPE_HELLO_ACK,
     Frame,
     FrameHeader,
@@ -15,6 +16,14 @@ from p2p.transport.connection import connect_and_send, start_server
 logger = logging.getLogger(__name__)
 
 class Node:
+    _KNOWN_TYPES = {
+        1,   # HELLO
+        2,   # HELLO_ACK
+        3,   # BYE
+        4,   # BYE_ACK
+        16,  # DATA
+    }
+
     def __init__(self, config: NodeConfig) -> None:
         self.config = config
         self._server: Optional[asyncio.AbstractServer] = None
@@ -44,24 +53,52 @@ class Node:
             await self._server.wait_closed()
             logger.info("Узел %s остановлен", self.config.node_id)
 
-     async def send_to(
-         self, host: str, port: int, message: str,
-     ) -> Optional[Frame]:
-         payload = message.encode("utf-8")
-         rid = self.next_request_id()
-         header = FrameHeader(
-             version=PROTOCOL_VERSION,
-             type=FRAME_TYPE_DATA,
-             flags=0,
-             request_id=rid,
-             payload_length=len(payload),
-         )
-         frame = Frame(header=header, payload=payload)
-         return await connect_and_send(
-             host=host, port=port,
-             frame=frame,
-             max_frame_payload=self.config.max_frame_payload,
-             connection_timeout=self.config.connection_timeout,
-             expected_request_id=rid,
-         )
-    
+    async def _on_frame(self, frame: Frame) -> Frame | None:
+        if frame.header.type not in self._KNOWN_TYPES:
+            logger.warning(
+                "Узел %s: неизвестный тип кадра %d",
+                self.config.node_id, frame.header.type,
+            )
+            return None  
+        try:
+            text = frame.payload.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            logger.warning(
+                "Узел %s: payload не UTF-8 (%s) - hex-представление",
+                self.config.node_id, exc,
+            )
+            text = frame.payload.hex()
+
+        logger.info("Узел %s получил: %r", self.config.node_id, text)
+        response_text = f"ACK from {self.config.node_id}: {text}"
+        response_payload = response_text.encode("utf-8")
+        response_header = FrameHeader(
+            version=PROTOCOL_VERSION,
+            type=FRAME_TYPE_HELLO_ACK,
+            flags=0,
+            request_id=frame.header.request_id,
+            payload_length=len(response_payload),
+        )
+        return Frame(header=response_header, payload=response_payload)
+
+    async def send_to(
+        self, host: str, port: int, message: str,
+    ) -> Optional[Frame]:
+        payload = message.encode("utf-8")
+        rid = self.next_request_id()
+        header = FrameHeader(
+            version=PROTOCOL_VERSION,
+            type=FRAME_TYPE_DATA,
+            flags=0,
+            request_id=rid,
+            payload_length=len(payload),
+        )
+        frame = Frame(header=header, payload=payload)
+
+        return await connect_and_send(
+            host=host, port=port,
+            frame=frame,
+            max_frame_payload=self.config.max_frame_payload,
+            connection_timeout=self.config.connection_timeout,
+            expected_request_id=rid,  
+        )
